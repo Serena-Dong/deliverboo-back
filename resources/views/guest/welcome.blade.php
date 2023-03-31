@@ -23,14 +23,24 @@
 
 <body>
     <div id="home-guest">
-        <div class="container">
+        <div class="container-fluid">
             <header>
                 @include('includes.navbar')
             </header>
             <main class="d-flex align-items-end justify-content-center">
-                <div class="d-flex flex-column align-items-center justify-content-center text-center">
-                    <h1>Diventa un partner DeliveBoo</h1>
-                    <a class="nav-link btn-cust" href="{{ route('register') }}">{{ __('Crea Account') }}</a>
+                <!-- Main small -->
+                <div class="d-block d-md-none">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
+                        <h2 class="page-title-2">Diventa un partner DeliveBoo</h2>
+                        <a class="nav-link btn-cust" href="{{ route('register') }}">{{ __('Crea Account') }}</a>
+                    </div>
+                </div>
+                <!-- Main big -->
+                <div class="d-none d-md-block">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center">
+                        <h1 class="page-title-1">Diventa un partner DeliveBoo</h1>
+                        <a class="nav-link btn-cust" href="{{ route('register') }}">{{ __('Crea Account') }}</a>
+                    </div>
                 </div>
             </main>
         </div>
