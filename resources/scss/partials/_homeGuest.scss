@@ -37,6 +37,22 @@
                 color: white;
             }
         }
+
+        #bg-btn {
+            background-color: #ff771f;
+
+            &:hover {
+                background-color: #ffaf7a;
+            }
+
+            .btn-color {
+                background-image: url("https://icon-library.com/images/hamburger-icon-white/hamburger-icon-white-16.jpg");
+
+                &:hover {
+                    background-color: #ffaf7a;
+                }
+            }
+        }
     }
 
     main {
