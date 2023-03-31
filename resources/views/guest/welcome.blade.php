@@ -7,11 +7,15 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Page logo -->
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1090199171568500760/1091310054222864464/logo_deliverboo_100x250.png" type="image/icon type">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
     <!-- Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -21,7 +25,7 @@
 
 <body>
     <div id="home-guest">
-        <div class="container">
+        <div class="container-fluid">
             <header>
                 @include('includes.navbar')
             </header>
@@ -43,7 +47,6 @@
             </main>
         </div>
     </div>
-    
 </body>
 
 </html>
