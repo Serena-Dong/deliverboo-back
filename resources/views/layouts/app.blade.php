@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Page logo -->
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1090199171568500760/1091310054222864464/logo_deliverboo_100x250.png" type="image/icon type">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
