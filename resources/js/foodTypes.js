@@ -17,6 +17,28 @@ return [
             image: 'https://cdn.discordapp.com/attachments/1090199171568500760/1090933497922863135/photo-1568901346375-23c9450c58cd.jpeg'
         },
     ],
+    restaurants = [
+        {
+            name: 'Pizzeria da Ciccio',
+            address: 'Via Lecco 27, Milano',
+            phone_number: '0683649637',
+            description: 'Una pizzeria accogliente e informale che serve deliziose pizze cotte a legna, accompagnate da bevande fresche e una vasta selezione di antipasti e dessert.',
+            rating: '2',
+            min_order: '10.00',
+            shipment_price: '1.99',
+            logo: 'https://images-ext-2.discordapp.net/external/Cc9Aos_9plvpTJttTpmsiExKFSDgmUXKLtrGIIWytac/https/img.italiaonline.it/0WO5p000003zlz6GAA_LogoCiccio.png'
+        },
+        {
+            name: 'Shizen',
+            address: 'Via V. Bachelet 22, Viterbo',
+            phone_number: '0761251242',
+            description: "Un ristorante giapponese specializzato in sushi fresco e preparato al momento, con una vasta scelta di roll, nigiri e sashimi, serviti in un'atmosfera elegante e raffinata.",
+            rating: '4',
+            min_order: '15.00',
+            shipment_price: '0.99',
+            logo: 'https://images-ext-2.discordapp.net/external/Uk97XcN-efiJiUuF1w2nxgu9Nv9FDlavsuC6Xx-LW-M/https/static.wixstatic.com/media/75999d_13efac4b87134b8db39d0cd3dd23db4f~mv2.png/v1/fit/w_2500%2Ch_1330%2Cal_c/75999d_13efac4b87134b8db39d0cd3dd23db4f~mv2.png?width=628&height=491'
+        }
+    ],
 
     foods = [
         {
@@ -83,23 +105,20 @@ return [
             is_public: true,
         },
     ],
-    menus = [
+    orders = [
         {
-            name: 'Pizza',
-            image: 'https://images.app.goo.gl/T4jMQLW2FBgPNb356'
-        },
-        {
-            name: 'Sushi',
-            image: 'https://images.app.goo.gl/EMGWvFDEyUxXUJYeA'
-        },
-        {
-            name: 'Messicano',
-            image: 'https://cdn.discordapp.com/attachments/1090199171568500760/1090932785465786388/16801690350286996254972283672915.jpg'
-        },
-        {
-            name: 'Fast-Food',
-            image: 'https://cdn.discordapp.com/attachments/1090199171568500760/1090933497922863135/photo-1568901346375-23c9450c58cd.jpeg'
-        },
+            address: '',
+            total_price: '',
+            guest_name: '',
+            phone_number: '',
+            status: ''
+        }
     ],
+    payment_methods = [
+        {
+            card_number: ''
+        }
+    ]
+
 
 ]
