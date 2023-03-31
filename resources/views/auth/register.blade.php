@@ -40,6 +40,20 @@
                         </div>
 
                         <div class="mb-4 row">
+                            <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('P. IVA') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="vat_number" type="vat_number" class="form-control @error('vat_number') is-invalid @enderror" name="vat_number" required autocomplete="new-vat_number">
+
+                                @error('vat_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
