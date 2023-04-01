@@ -1,5 +1,9 @@
 #home-guest {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(253, 78, 9, 0.226)), url("https://images-ext-2.discordapp.net/external/bWpsvgOXfP0z6nTxqf9SaFSu8MCdOJhPXiIUjZBz9x4/https/img.freepik.com/fotos-premium/resumen-borroso-cafeteria-cafeteria-restaurante-fondo_1339-170592.jpg");
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0),
+            rgba(253, 78, 9, 0.226)
+        ),
+        url("https://images-ext-2.discordapp.net/external/bWpsvgOXfP0z6nTxqf9SaFSu8MCdOJhPXiIUjZBz9x4/https/img.freepik.com/fotos-premium/resumen-borroso-cafeteria-cafeteria-restaurante-fondo_1339-170592.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -56,11 +60,13 @@
         .page-title-1 {
             font-size: 70px;
             color: white;
+            text-shadow: 1px 1px 2px black;
         }
 
         .page-title-2 {
             font-size: 30px;
             color: white;
+            text-shadow: 1px 1px 2px black;
         }
 
         .btn-cust {
