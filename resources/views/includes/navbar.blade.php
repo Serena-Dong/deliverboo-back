@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light" id="navbar">
-    <div class="container" >
+    <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <div class="logo mb-1">
                 <img src="https://cdn.discordapp.com/attachments/1090199171568500760/1091310054222864464/logo_deliverboo_100x250.png" class="img" alt="">

@@ -22,13 +22,13 @@
 </head>
 
 <body>
+
     <div id="app">
-
-
-        @include('includes.navbar')
-
+        @yield('pageId', '')
         <main class="">
+            @include('includes.navbar')
             @yield('content')
+
         </main>
     </div>
 </body>
