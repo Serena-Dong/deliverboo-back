@@ -3,11 +3,11 @@
 @section('title', 'Crea un nuovo cibo')
 
 @section('content')
-  <header class="my-5">
-    <h1>Crea</h1>
+<div class="container-fluid">
+  <header class="m-5">
+    <h1 class="text-center">Crea Cibo</h1>
   </header>
-  <hr>
-
-  @include('includes.foods.form')
-
+    @include('includes.foods.form')
+</div>
+    
 @endsection
