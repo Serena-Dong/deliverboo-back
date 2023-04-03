@@ -39,7 +39,7 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required|string|min:5|max:40',
             'description' => 'required|string',
-            'logo' => 'nullable|string|mimes:jpeg,jpg,png',
+            'logo' => 'nullable|image|mimes:jpeg,jpg,png',
             'address' => 'nullable|string',
             'phone_number' => 'nullable|string|max:10|min:10',
             'min_order' => 'nullable',
@@ -53,9 +53,8 @@ class RestaurantController extends Controller
 
         $data = $request->all();
         if (Arr::exists($data, 'logo')) {
-            if ($restaurant->logo) Storage::delete($restaurant->logo);
-            $extension = $data['logo']->extension();
-            $img_url = Storage::putFileAs('restaurants', $data['logo']);
+            // if ($restaurant->logo) Storage::delete($restaurant->logo);
+            $img_url = Storage::put('restaurants', $data['logo']);
             $data['logo'] = $img_url;
         }
         
