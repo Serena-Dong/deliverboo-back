@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('admin.pages.home');
+    return view('admin.restaurants.index');
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
