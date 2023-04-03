@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -31,6 +33,12 @@ class FoodController extends Controller
     {
         $data = $request->all();
         $food = new Food();
+
+        if(Arr::exists($data, 'image')){
+            $img_url = Storage::put('foods', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $food->fill($data);
         $food->save();
         return to_route('admin.foods.show', $food->id);
@@ -60,6 +68,13 @@ class FoodController extends Controller
     public function update(Request $request, Food $food)
     {
         $data = $request->all();
+
+        if(Arr::exists($data, 'image')){
+            if($food->image) Storage::delete($food->image);
+            $img_url = Storage::put('foods', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $food->update($data);
         return view('admin.foods.show', compact('food'));
         
@@ -70,6 +85,6 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        //
+        if($food->image) Storage::delete($food->image);
     }
 }

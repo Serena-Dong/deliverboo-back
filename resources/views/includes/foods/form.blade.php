@@ -106,7 +106,7 @@
           imagePreview.src = e.target.result;
         }
 
-      } else imagePreview.setAttribute('src', placeholder);
+      } else imagePreview.src = placeholder;
     });
   </script>
 @endsection
