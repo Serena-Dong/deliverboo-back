@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
+<div class="container p-4">
     <h2 class="fs-4 text-secondary my-4">
         {{ __('Profile') }}
     </h2>
@@ -18,7 +18,7 @@
 
     </div>
 
-    <div class="card p-4 mb-4 bg-white shadow rounded-lg">
+    <div class="card p-4 bg-white shadow rounded-lg">
 
 
         @include('profile.partials.delete-user-form')
