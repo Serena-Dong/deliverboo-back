@@ -60,6 +60,10 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+
+        // if ($restaurant->image) Storage::delete($restaurant->image);
+        // if (count($restaurant->typologies)) $restaurant->typologies()->detach();
+        $restaurant->delete();
+        return to_route('admin.restaurants.index');
     }
 }
