@@ -1,4 +1,4 @@
-@if ($post->exists)
+@if ($food->exists)
   <form action="{{ route('admin.foods.update', $food->id) }}" method="POST" enctype="multipart/form-data" novalidate>
     @method('PUT')
   @else
@@ -62,8 +62,8 @@
   {{-- DESCRIPTION  --}}
   <div class="col">
     <div class="mb-3">
-      <label for="description" class="form-label">Descrizione Ricetta</label>
-      <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $recipe->description) }}</textarea>
+      <label for="description" class="form-label">Descrizione cibo</label>
+      <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $food->description) }}</textarea>
       @error('description')
         <div class="invalid-feedback">{{ $message }}</div>
       @enderror

@@ -12,7 +12,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.foods.index');
     }
 
     /**
@@ -20,7 +20,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        $food = new Food();
+        return view('admin.foods.create',compact('food'));
     }
 
     /**
@@ -28,7 +29,11 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $food = new Food();
+        $food->fill($data);
+        $post->save();
+        return to_route('admin.foods.show', $food->id);
     }
 
     /**
@@ -36,7 +41,8 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        //
+        return view('admin.foods.show', compact('food'));
+        
     }
 
     /**
@@ -44,7 +50,8 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        //
+        return view('admin.foods.edit', compact('food'));
+        
     }
 
     /**
@@ -52,7 +59,10 @@ class FoodController extends Controller
      */
     public function update(Request $request, Food $food)
     {
-        //
+        $data = $request->all();
+        $food->update($data);
+        return view('admin.foods.show', compact('food'));
+        
     }
 
     /**
