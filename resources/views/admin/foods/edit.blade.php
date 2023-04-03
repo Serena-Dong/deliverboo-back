@@ -4,11 +4,11 @@
 
 
 @section('content')
-  <header class="my-5">
-    <h1>Modifica</h1>
+<div class="container-fluid">
+  <header class="m-5">
+    <h1 class="text-center">Modifica Cibo</h1>
   </header>
-  <hr>
-
-  @include('includes.foods.form')
+    @include('includes.foods.form')
+</div>
 
 @endsection

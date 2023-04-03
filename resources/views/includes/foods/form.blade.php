@@ -6,11 +6,20 @@
 @endif
 
 @csrf
-<div class="row">
+<div class="row px-5 d-flex justify-content-center">
+
+  {{-- IS PUBLIC --}}
+  <div class="col-10">
+    <div class="my-4 form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
+        @if (old('is_public', $food->is_public)) checked @endif>
+      <label class="form-check-label" for="is_published">Pubblicato</label>
+    </div>
+  </div>
 
   {{-- NAME  --}}
   <div class="col-md-6">
-    <div class="mb-3">
+    <div class="mb-3 w-75">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
         value="{{ old('name', $food->name) }}" required minlength="1">
@@ -22,17 +31,8 @@
     </div>
   </div>
 
-  {{-- SLUG  --}}
-  <div class="col-md-6">
-    <div class="mb-3">
-      <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control" id="slug" value="{{ Str::slug(old('name', $food->name), '-') }}"
-        disabled>
-    </div>
-  </div>
-
   {{-- PRICE --}}
-  <div class="col-md-6">
+  <div class="col-4">
     <div class="mb-3">
       <label for="price" class="form-label">Price</label>
       <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price"
@@ -45,43 +45,42 @@
     </div>
   </div>
 
+  {{-- DESCRIPTION  --}}
+  <div class="col-6">
+    <div class="mb-3 w-75">
+      <label for="description" class="form-label">Descrizione cibo</label>
+      <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $food->description) }}</textarea>
+      @error('description')
+        <div class="invalid-feedback">{{ $message }}</div>
+      @else
+        <small class=" text-muted">Inserisci la descrizione del cibo</small>
+      @enderror
+    </div>
+  </div>
+
   {{-- Image --}}
-  <div class="col-md-7">
+  <div class="col-4 mb-4">
     <div class="mb-3">
       <label for="image" class="form-label">Immagine</label>
       <input type="file" class="form-control" id="image"
         name="image">
     </div>
-  </div>
-  <div class="col-md-1">
-    <img class="img-fluid" id="img-preview"
-      src="{{ $food->image ? asset('storage/' . $food->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
-      alt="">
-  </div>
-
-  {{-- DESCRIPTION  --}}
-  <div class="col">
-    <div class="mb-3">
-      <label for="description" class="form-label">Descrizione cibo</label>
-      <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $food->description) }}</textarea>
-      @error('description')
-        <div class="invalid-feedback">{{ $message }}</div>
-      @enderror
-    </div>
-  </div>
-
-  {{-- IS PUBLIC --}}
-  <div class="col-2 d-flex justify-content-end">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
-        @if (old('is_public', $food->is_public)) checked @endif>
-      <label class="form-check-label" for="is_published">Pubblicato</label>
+    
+    <div class="col-12 d-flex justify-content-center">
+      <div class="mb-3 w-25">
+        <img class="img-fluid" id="img-preview"
+        src="{{ $food->image ? asset('storage/' . $food->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
+        alt="">
+      </div>
     </div>
   </div>
 
   
+
+  
 <hr>
-<div class="d-flex justify-content-between bg-white">
+
+<div class="d-flex justify-content-between mt-4 px-5">
   <a href="{{ route('admin.foods.index') }}" class="btn btn-secondary me-2"><i class="fas fa-arrow-left me-2"></i>
     Indietro</a>
   <button type="submit" class="btn btn-success"><i class="fas fa-floppy-disk me-2"></i> Salva</button>
@@ -90,16 +89,6 @@
 
 
 @section('scripts')
-
-  {{-- SLUG  --}}
-  <script>
-    const slugInput = document.getElementById('slug');
-    const titleInput = document.getElementById('name');
-
-    titleInput.addEventListener('blur', () => {
-      slugInput.value = titleInput.value.toLowerCase().split(' ').join('-');
-    });
-  </script>
 
   {{-- IMAGE  --}}
   <script>
