@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light" id="navbar">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" @auth
-            href="{{ route('home')}}"
+            href="{{ route('admin.restaurants.index')}}"
         @endauth href="{{ url('/') }}">
             <div class="logo mb-1">
                 <img src="https://cdn.discordapp.com/attachments/1090199171568500760/1091310054222864464/logo_deliverboo_100x250.png" class="img" alt="">
@@ -30,7 +30,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right bg-color-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('home') }}">{{__('home')}}</a>
+                        <a class="dropdown-item" href="{{ url('/admin/restaurants') }}">{{__('Home')}}</a>
                         <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
