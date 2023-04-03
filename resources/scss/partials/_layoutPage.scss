@@ -1,13 +1,28 @@
-#registration {
-    background: linear-gradient(297.36deg, #FF8C42 63.99%, #FEB889 64%, #FEB07C 87.32%, #FCFBF7 143.55%);
+#base-layout {
+    background: linear-gradient(
+        297.36deg,
+        #ff8c42 63.99%,
+        #feb889 64%,
+        #feb07c 87.32%,
+        #fcfbf7 143.55%
+    );
     min-height: 100vh;
+    a {
+        font-weight: bold;
+        text-decoration: none;
+    }
 
     #navbar {
         background-color: rgba(0, 0, 0, 0.5);
-
         a {
-            font-weight: bold;
             color: white;
+        }
+
+        .bg-color-menu {
+            background-color: rgba(0, 0, 0, 0.5);
+            a:hover {
+                background-color: rgba(0, 0, 0, 0.736);
+            }
         }
 
         #bg-btn {
@@ -29,7 +44,7 @@
 
     .card {
         margin-top: 5rem;
-        border: #FEB889;
+        border: #feb889;
 
         .card-header {
             background-color: #ff9e6279;
@@ -37,8 +52,8 @@
         }
 
         .btn {
-            background-color: #FF8C42;
-            border: #FEB07C;
+            background-color: #ff8c42;
+            border: #feb07c;
             font-weight: bold;
         }
     }

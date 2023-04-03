@@ -24,12 +24,14 @@
 <body>
 
     <div id="app">
-        @yield('pageId', '')
+       
+        <div id="base-layout">
         <main class="">
             @include('includes.navbar')
             @yield('content')
 
         </main>
+    </div>
     </div>
 </body>
 
