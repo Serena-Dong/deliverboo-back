@@ -32,7 +32,7 @@ class FoodController extends Controller
         $data = $request->all();
         $food = new Food();
         $food->fill($data);
-        $post->save();
+        $food->save();
         return to_route('admin.foods.show', $food->id);
     }
 
