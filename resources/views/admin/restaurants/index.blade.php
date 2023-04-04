@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="text-center my-5 @if(count($restaurants) == 1) d-none @endif">
+        <div class="text-center mt-5 @if(count($restaurants) == 1) d-none @endif">
             <a href="{{ route('admin.restaurants.create') }}" class="btn btn-success">
                 <i class="fas fa-plus me-2"></i> Aggiungi il tuo ristorante
             </a>
