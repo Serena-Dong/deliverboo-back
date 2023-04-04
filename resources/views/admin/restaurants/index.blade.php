@@ -14,7 +14,7 @@
                     <a href="{{ route('admin.restaurants.show', $restaurant['id']) }}" style="text-decoration: none; color:black;">
                         <div class="card d-flex flex-column-reverse align-items-center h-100 justify-content-between">
                             <figure class="text-center h-50 w-100 mb-5">
-                                <img src="{{ asset($restaurant->logo) }}" alt="{{$restaurant->name}}" class="img-fluid h-100">
+                                <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="{{$restaurant->name}}" class="img-fluid h-100 rounded-3">
                             </figure>
                             <div class="info text-center m-3">
                                 <h1>Ristorante {{$restaurant->name}}</h1>
