@@ -10,9 +10,9 @@
 
         <div class="row p-5 d-flex flex-wrap justify-content-center">
             @foreach ($restaurants as $restaurant)
-            <div class="col-6 pb-4 h-100" style="height: 350px; min-width:450px">
+            <div class="col-6 h-100" style="height: 350px; min-width:450px">
                 <a href="{{ route('admin.restaurants.show', $restaurant['id']) }}" style="text-decoration: none; color:black;">
-                    <div class="card">
+                    <div class="card pb-4">
                         <div class="info text-center py-3">
                             <h1>Ristorante: {{$restaurant->name}}</h1>
                         </div>
