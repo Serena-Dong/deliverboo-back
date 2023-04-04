@@ -23,7 +23,7 @@
                     </a>
                     <div class="d-flex justify-content-center align-items-center mt-4 mb-5 gap-3">
                         <a href="{{ route('admin.restaurants.show', $restaurant->id) }}" class="btn btn-primary text-white"><i class="fa-solid fa-eye"></i> Visualizza</a>
-                        <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST">
+                        <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST" class="delete-form">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash"></i> Elimina</button>
