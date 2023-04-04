@@ -3,11 +3,13 @@
 @section('content')
 <section>
     <div class="container py-5 mt-5">
-        <div class="text-center my-1">
+        
+        <div class="text-center my-1 @if(count($restaurants) == 1) d-none @endif">
             <a href="{{ route('admin.restaurants.create') }}" class="btn btn-success">
-            <i class="fas fa-plus me-2"></i> Aggiungi un nuovo ristorante
+            <i class="fas fa-plus me-2"></i> Aggiungi il tuo ristorante
             </a>
         </div>
+        
         <div class="row d-flex g-5 flex-wrap justify-content-center">
             @foreach ($restaurants as $restaurant)
                 <div class="col-6 my-5 " style="height: 350px; min-width:450px">

@@ -27,7 +27,15 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+
+        $user = Auth::id();
+        $restaurants = Restaurant::where('user_id', $user)->get();
+
+        if((count($restaurants) == 1)){
+            return to_route('admin.restaurants.index');
+        }
         $restaurant = new Restaurant();
+        
         return view('admin.restaurants.create', compact('restaurant'));
     }
 
@@ -97,9 +105,9 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
 
-        // if ($restaurant->image) Storage::delete($restaurant->image);
+        if ($restaurant->image) Storage::delete($restaurant->image);
         // if (count($restaurant->typologies)) $restaurant->typologies()->detach();
         $restaurant->delete();
-        return to_route('admin.restaurants.index');
+        return to_route('admin.restaurants.index')->with('type', 'danger')->with('msg', "Il post '$restaurant->name' è stato cancellato con successo.");
     }
 }

@@ -9,7 +9,7 @@
 <div class="row px-5 d-flex justify-content-center">
 
   {{-- IS PUBLIC --}}
-  <div class="col-10">
+  <div class="col-md-10">
     <div class="my-4 form-check form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
         @if (old('is_public', $food->is_public)) checked @endif>

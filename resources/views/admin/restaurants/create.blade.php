@@ -120,3 +120,25 @@
   
 
 @endsection
+
+@section('scripts')
+<script>
+    const placeholder = 'https://marcolanci.it/utils/placeholder.jpg';
+
+    const imageInput = document.getElementById('logo');
+    const imagePreview = document.getElementById('img-preview');
+
+    imageInput.addEventListener('change', () => {
+      if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.readAsDataURL(imageInput.files[0]);
+
+        reader.onload = e => {
+          imagePreview.src = e.target.result;
+        }
+
+      } else imagePreview.src = placeholder;
+    });
+  </script>
+
+@endsection
