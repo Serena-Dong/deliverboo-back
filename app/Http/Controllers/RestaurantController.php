@@ -53,7 +53,7 @@ class RestaurantController extends Controller
             'shipment_price' => 'nullable|numeric|min:5',
             'typologies' => 'nullable|exists:typologies,id'
 
-        ],[
+        ], [
             'name.required' => 'Il nome del ristorante è obbligatorio',
             'name.min' => 'Il nome del ristorante deve avere almeno :min caratteri',
             'name.max' => 'Il nome del ristorante deve avere massimo :max caratteri',
@@ -120,6 +120,15 @@ class RestaurantController extends Controller
 
         if ($restaurant->image) Storage::delete($restaurant->image);
         // if (count($restaurant->typologies)) $restaurant->typologies()->detach();
+
+        // DA VEDERE
+        if ($restaurant->foods) {
+            $foods = $restaurant->foods->toArray();
+            foreach ($foods as $food) {
+                $food->delete();
+            }
+        };
+
         $restaurant->delete();
         return to_route('admin.restaurants.index')->with('type', 'danger')->with('msg', "Il ristorante '$restaurant->name' è stato cancellato con successo.");
     }
