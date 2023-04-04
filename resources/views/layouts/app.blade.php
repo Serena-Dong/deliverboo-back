@@ -29,9 +29,10 @@
     <div id="app">
        
         <div id="base-layout">
-        <main class="">
+        <main>
             @include('includes.navbar')
-            
+          <div class="container">
+             
             {{-- INFO --}}
             @include('includes.alerts.session')
 
@@ -41,7 +42,7 @@
             @endauth
 
             @yield('content')
-
+        </div> 
         </main>
 
         @yield('scripts')
