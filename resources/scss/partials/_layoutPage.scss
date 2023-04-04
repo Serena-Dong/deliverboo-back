@@ -1,12 +1,11 @@
 #base-layout {
-    background: linear-gradient(
-        297.36deg,
-        #ff8c42 63.99%,
-        #feb889 64%,
-        #feb07c 87.32%,
-        #fcfbf7 143.55%
-    );
+    background: linear-gradient(297.36deg,
+            #ff8c42 63.99%,
+            #feb889 64%,
+            #feb07c 87.32%,
+            #fcfbf7 143.55%);
     min-height: 100vh;
+
     a {
         font-weight: bold;
         text-decoration: none;
@@ -14,12 +13,14 @@
 
     #navbar {
         background-color: rgba(0, 0, 0, 0.5);
+
         a {
             color: white;
         }
 
         .bg-color-menu {
             background-color: rgba(0, 0, 0, 0.5);
+
             a:hover {
                 background-color: rgba(0, 0, 0, 0.736);
             }
@@ -51,7 +52,7 @@
             border: 0;
         }
 
-        .btn {
+        .btn-cust {
             background-color: #ff8c42;
             border: #feb07c;
             font-weight: bold;
