@@ -13,9 +13,10 @@
     <div class="my-4 form-check form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
         @if (old('is_public', $food->is_public)) checked @endif>
-      <label class="form-check-label" for="is_published">Pubblicato</label>
+      <label class="form-check-label" for="is_public">Pubblicato</label>
     </div>
   </div>
+
 
   {{-- NAME  --}}
   <div class="col-md-6">
