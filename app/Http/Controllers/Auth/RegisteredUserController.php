@@ -34,7 +34,20 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'vat_number' => ['string','unique:'.User::class,'max:11']
+            'vat_number' => ['string','unique:'.User::class,'max:11', 'min:11']
+
+        ],[
+            'name.required' => 'il nome deve essere obbligatorio',
+            'email.required' => 'l\' email è obbligatoria',
+            'email.unique' => 'Questa email è già stata usata',
+            'password.required' => 'la password è obbligatoria',
+            'password.confirmed' => 'la password non corrisponde',
+            'vat_number.unique' => 'Questa partita iva è già stata usata',
+            'vat_number.min' => 'La partita iva deve essere :min caratteri',
+            'vat_number.max' => 'La partita iva deve essere :max caratteri',
+
+
+
 
         ]);
 
