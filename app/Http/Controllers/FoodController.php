@@ -51,7 +51,7 @@ class FoodController extends Controller
             'price' => 'required|min:1',
             'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'description' => 'nullable|string',
-            'is_public' => 'boolean',
+            'is_public' => 'nullable',
             'restaurant_id' => 'nullable|exists:restaurants,id',
         ], [
 
@@ -108,7 +108,7 @@ class FoodController extends Controller
             'price' => 'required|min:1',
             'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'description' => 'nullable|string',
-            'is_public' => 'boolean',
+            'is_public' => 'nullable',
             'restaurant_id' => 'nullable|exists:restaurants,id',
         ], [
 
