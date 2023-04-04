@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
-
-
-
 use App\Models\Restaurant;
+use App\Models\Typology;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -27,16 +26,16 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-
+        $typologies = Typology::all();
         $user = Auth::id();
         $restaurants = Restaurant::where('user_id', $user)->get();
 
-        if((count($restaurants) == 1)){
+        if ((count($restaurants) == 1)) {
             return to_route('admin.restaurants.index');
         }
         $restaurant = new Restaurant();
-        
-        return view('admin.restaurants.create', compact('restaurant'));
+
+        return view('admin.restaurants.create', compact('restaurant', 'typologies'));
     }
 
     /**
@@ -49,11 +48,11 @@ class RestaurantController extends Controller
             'description' => 'required|string',
             'logo' => 'nullable|image|mimes:jpeg,jpg,png',
             'address' => 'nullable|string',
-            'phone_number' => 'nullable|string|max:10|min:10',
+            'phone_number' => 'nullable|string|max:13',
             'min_order' => 'nullable',
-            'shipment_price' => 'nullable'
+            'shipment_price' => 'nullable',
+            // 'typologies' => 'nullable|exists:typologies,id'
 
-            
         ]);
 
         $restaurant = new Restaurant();
@@ -65,12 +64,14 @@ class RestaurantController extends Controller
             $img_url = Storage::put('restaurants', $data['logo']);
             $data['logo'] = $img_url;
         }
-        
+
         $restaurant->fill($data);
 
         $restaurant->user_id = Auth::id();
 
         $restaurant->save();
+        // Relaziono il post con il / i tag
+        if (Arr::exists($data, 'typologies')) $restaurant->typologies()->attach($data['typologies']);
 
         return to_route('admin.restaurants.show', $restaurant->id);
     }
