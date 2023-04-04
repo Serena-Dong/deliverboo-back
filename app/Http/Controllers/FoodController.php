@@ -20,7 +20,6 @@ class FoodController extends Controller
         $foods = $query->get();
 
         return view('admin.foods.index', compact('foods'));
-
     }
 
     /**
@@ -32,12 +31,12 @@ class FoodController extends Controller
         $restaurants = Restaurant::where('user_id', $user)->get();
 
         // SE NON CI SONO RISTORANTI RIMANDA NELL'INDEX
-        if((count($restaurants) == 1)){
+        if ((!count($restaurants))) {
             return to_route('admin.restaurants.index');
         }
 
         $food = new Food();
-        return view('admin.foods.create',compact('food'));
+        return view('admin.foods.create', compact('food'));
     }
 
     /**
@@ -66,7 +65,7 @@ class FoodController extends Controller
         $data = $request->all();
         $food = new Food();
 
-        if(Arr::exists($data, 'image')){
+        if (Arr::exists($data, 'image')) {
             $img_url = Storage::put('foods', $data['image']);
             $data['image'] = $img_url;
         }
@@ -84,7 +83,6 @@ class FoodController extends Controller
     public function show(Food $food)
     {
         return view('admin.foods.show', compact('food'));
-        
     }
 
     /**
@@ -93,7 +91,6 @@ class FoodController extends Controller
     public function edit(Food $food)
     {
         return view('admin.foods.edit', compact('food'));
-        
     }
 
     /**
@@ -122,17 +119,16 @@ class FoodController extends Controller
 
         $data = $request->all();
 
-        if(Arr::exists($data, 'image')){
-            if($food->image) Storage::delete($food->image);
+        if (Arr::exists($data, 'image')) {
+            if ($food->image) Storage::delete($food->image);
             $img_url = Storage::put('foods', $data['image']);
             $data['image'] = $img_url;
         }
-        
+
         $data['is_public'] = Arr::exists($data, 'is_public');
 
         $food->update($data);
         return view('admin.foods.show', compact('food'))->with('type', 'danger')->with('msg', "Il Cibo '$food->name' è stato modificato con successo.");
-        
     }
 
     /**
@@ -140,7 +136,7 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        if($food->image) Storage::delete($food->image);
+        if ($food->image) Storage::delete($food->image);
         $food->delete();
         return to_route('admin.foods.index')->with('type', 'danger')->with('msg', "Il Cibo '$food->name' è stato cancellato con successo.");
     }
