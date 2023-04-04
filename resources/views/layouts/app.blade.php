@@ -31,6 +31,15 @@
         <div id="base-layout">
         <main class="">
             @include('includes.navbar')
+            
+            {{-- INFO --}}
+            @include('includes.alerts.session')
+
+            {{-- ERROR  --}}
+            @auth
+                @include('includes.alerts.errors')
+            @endauth
+
             @yield('content')
 
         </main>
