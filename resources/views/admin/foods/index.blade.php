@@ -4,7 +4,7 @@
 
 @section('content')
   <header class="d-flex align-items-center justify-content-between">
-    <h1 class="my-5">Foods</h1>
+    <h1 class="my-5">Menu</h1>
     <div class="d-flex flex-grow-1 align-items-center justify-content-center">
       
     </div>
@@ -13,7 +13,7 @@
     </a>
   </header>
 
-  <table class="table table-light table-striped">
+  <table class="table table-light table-striped mb-0">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -74,7 +74,7 @@
         </tr>
       @empty
         <tr>
-          <th scope="row" colspan="8" class="text-center">Non ci sono Cibi</th>
+          <th scope="row" colspan="9" class="text-center">Non ci sono Cibi</th>
         </tr>
       @endforelse
 

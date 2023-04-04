@@ -117,7 +117,7 @@ class FoodController extends Controller
         $request->validate([
 
             'name' => 'required|string|min:5|max:50',
-            'price' => 'required|min:1',
+            'price' => 'required|numeric|min:1',
             'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'description' => 'nullable|string',
             'is_public' => 'nullable',
@@ -127,6 +127,8 @@ class FoodController extends Controller
             'name.required' => 'Il Nome è obbligatorio',
             'name.min' => 'Il Nome deve avere almeno 5 caratteri.',
             'name.max' => 'Il Nome non deve superare i 50 caratteri.',
+            'price.required' => 'Il prezzo è obbligatorio',
+            'price.min' => 'Il prezzo minimo è :min €',
             'image.image' => 'L\'immagine deve essere file di tipo immagine',
             'image.mimes' => 'Le estensioni accettate sono jpeg, jpg, png',
             'restaurant_id' => 'Ristorante non valido',
