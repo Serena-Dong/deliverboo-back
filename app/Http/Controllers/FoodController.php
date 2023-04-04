@@ -16,8 +16,12 @@ class FoodController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Food::orderBy('updated_at', 'DESC');
-        $foods = $query->get();
+        $user = Auth::id();
+        $restaurant = Restaurant::where('user_id', $user)->get();
+        //tiro fuori la colonna ID dalla tabella ristoranti
+        $restaurant_id = $restaurant->pluck('id')->toArray();
+
+        $foods = Food::where('restaurant_id', $restaurant_id[0])->orderBy('updated_at', 'DESC')->get();
 
         return view('admin.foods.index', compact('foods'));
     }
@@ -47,7 +51,7 @@ class FoodController extends Controller
         $request->validate([
 
             'name' => 'required|string|min:5|max:50',
-            'price' => 'required|min:1',
+            'price' => 'required|numeric|min:1',
             'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'description' => 'nullable|string',
             'is_public' => 'nullable',
@@ -57,6 +61,8 @@ class FoodController extends Controller
             'name.required' => 'Il Nome è obbligatorio',
             'name.min' => 'Il Nome deve avere almeno 5 caratteri.',
             'name.max' => 'Il Nome non deve superare i 50 caratteri.',
+            'price.required' => 'Il prezzo è obbligatorio',
+            'price.min' => 'Il prezzo minimo è :min €',
             'image.image' => 'L\'immagine deve essere file di tipo immagine',
             'image.mimes' => 'Le estensioni accettate sono jpeg, jpg, png',
             'restaurant_id' => 'Ristorante non valido',
@@ -72,9 +78,18 @@ class FoodController extends Controller
 
         $data['is_public'] = Arr::exists($data, 'is_public');
 
+        $user = Auth::id();
+        $restaurant = Restaurant::where('user_id', $user)->get();
+
         $food->fill($data);
+
+        //tiro fuori la colonna ID dalla tabella ristoranti
+        $restaurant_id = $restaurant->pluck('id')->toArray();
+        // assegno alla colonna restaurant_id l'id del ristorante
+        $food->restaurant_id = $restaurant_id[0];
+
         $food->save();
-        return to_route('admin.foods.show', $food->id)->with('type', 'danger')->with('msg', "Il Cibo '$food->name' è stato creato con successo.");
+        return to_route('admin.foods.show', $food->id)->with('type', 'danger')->with('msg', "Il piatto '$food->name' è stato creato con successo.");
     }
 
     /**
@@ -128,7 +143,7 @@ class FoodController extends Controller
         $data['is_public'] = Arr::exists($data, 'is_public');
 
         $food->update($data);
-        return view('admin.foods.show', compact('food'))->with('type', 'danger')->with('msg', "Il Cibo '$food->name' è stato modificato con successo.");
+        return view('admin.foods.show', compact('food'))->with('type', 'danger')->with('msg', "Il piatto '$food->name' è stato modificato con successo.");
     }
 
     /**
@@ -138,7 +153,7 @@ class FoodController extends Controller
     {
         if ($food->image) Storage::delete($food->image);
         $food->delete();
-        return to_route('admin.foods.index')->with('type', 'danger')->with('msg', "Il Cibo '$food->name' è stato cancellato con successo.");
+        return to_route('admin.foods.index')->with('type', 'danger')->with('msg', "Il piatto '$food->name' è stato cancellato con successo.");
     }
 
     public function toggle(Food $food)
@@ -150,6 +165,6 @@ class FoodController extends Controller
 
         $food->save();
 
-        return redirect()->back()->with('type', $type)->with('msg', "Il post è stato $action.");
+        return redirect()->back()->with('type', $type)->with('msg', "Il piatto è stato $action.");
     }
 }
