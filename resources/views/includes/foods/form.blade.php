@@ -33,8 +33,8 @@
   </div>
 
   {{-- PRICE --}}
-  <div class="col-4">
-    <div class="mb-3">
+  <div class="col-md-4">
+    <div class="mb-3 w-75">
       <label for="price" class="form-label">Price</label>
       <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price"
         value="{{ old('price', $food->price) }}" required step="0.01" min="1">
@@ -47,7 +47,7 @@
   </div>
 
   {{-- DESCRIPTION  --}}
-  <div class="col-6">
+  <div class="col-md-6">
     <div class="mb-3 w-75">
       <label for="description" class="form-label">Descrizione cibo</label>
       <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $food->description) }}</textarea>
@@ -60,8 +60,8 @@
   </div>
 
   {{-- Image --}}
-  <div class="col-4 mb-4">
-    <div class="mb-3">
+  <div class="col-md-4 mb-4">
+    <div class="mb-3 w-75">
       <label for="image" class="form-label">Immagine</label>
       <input type="file" class="form-control" id="image"
         name="image">
