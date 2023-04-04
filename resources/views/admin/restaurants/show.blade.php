@@ -11,6 +11,13 @@
                     <h5 class="card-title">{{$restaurant->name}}</h5>
                     <address class="card-text"> {{$restaurant->address}} </address>
                     <p class="card-text">{{$restaurant->description}}</p>
+                    <p class="card-text">Tipo di cucina: 
+                        @forelse ($restaurant->typologies as $typology)
+                        <small class="text-body-secondary"> {{$typology->name}}@if(!$loop->last),@else. @endif  </small>
+                        @empty
+                        <small class="text-body-secondary"> nessuna tipologia </small>
+                        @endforelse
+                    </p>
                     <div class="d-flex d-lg-block justify-content-between">
                         <p class="card-text"><small class="text-body-secondary">Ordine Minimo: {{$restaurant->min_order}}€</small></p>
                         <p class="card-text mb-3"><small class="text-body-secondary">Costi di consegna: {{$restaurant->shipment_price}}€</small></p>
