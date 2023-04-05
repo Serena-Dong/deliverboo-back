@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\TypologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show']);
+Route::get('/typologies', [TypologyController::class, 'index']);
+Route::get('/typologies/{id}', [TypologyController::class, 'show']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
-    return $request->user();
-});
+//     return $request->user();
+// });
