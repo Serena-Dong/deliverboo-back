@@ -45,13 +45,25 @@ class RestaurantController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:5|max:40',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'logo' => 'nullable|image|mimes:jpeg,jpg,png',
             'address' => 'nullable|string',
             'phone_number' => 'nullable|string|max:13',
-            'min_order' => 'nullable',
-            'shipment_price' => 'nullable',
-            // 'typologies' => 'nullable|exists:typologies,id'
+            'min_order' => 'nullable|numeric|min:0',
+            'shipment_price' => 'nullable|numeric|min:5',
+            'typologies' => 'nullable|exists:typologies,id'
+
+        ], [
+            'name.required' => 'Il nome del ristorante è obbligatorio',
+            'name.min' => 'Il nome del ristorante deve avere almeno :min caratteri',
+            'name.max' => 'Il nome del ristorante deve avere massimo :max caratteri',
+            'logo.mimes' => "l'immagine deve essere di tipo :mimes",
+            'phone_number.max' => 'il numero di telefono deve avere max :max caratteri',
+            'min_order.min' => 'il prezzo dell\'ordine non deve essere inferiore a :min €',
+            'shipment_price.min' => 'il prezzo della spedizione non deve essere inferiore a :min €',
+            'typologies' => 'lw tipologie selezionate non sono valide'
+
+
 
         ]);
 
@@ -108,6 +120,15 @@ class RestaurantController extends Controller
 
         if ($restaurant->image) Storage::delete($restaurant->image);
         // if (count($restaurant->typologies)) $restaurant->typologies()->detach();
+
+        // DA VEDERE
+        if ($restaurant->foods) {
+            $foods = $restaurant->foods->toArray();
+            foreach ($foods as $food) {
+                $food->delete();
+            }
+        };
+
         $restaurant->delete();
         return to_route('admin.restaurants.index')->with('type', 'danger')->with('msg', "Il ristorante '$restaurant->name' è stato cancellato con successo.");
     }

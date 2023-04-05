@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FoodController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,5 @@ Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)
 Route::resource('typologies', App\Http\Controllers\TypologyController::class);
 Route::resource('foods', App\Http\Controllers\FoodController::class);
 Route::resource('orders', App\Http\Controllers\OrderController::class);
+Route::patch('/foods/{food}/toggle', [FoodController::class, 'toggle'])->name('foods.toggle');
 });

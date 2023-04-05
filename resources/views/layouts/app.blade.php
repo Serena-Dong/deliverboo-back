@@ -29,7 +29,7 @@
         <div id="base-layout">
             <main>
                 @include('includes.navbar')
-                <div class="container">
+                <div class="container pb-4">
 
                     {{-- INFO --}}
                     @include('includes.alerts.session')

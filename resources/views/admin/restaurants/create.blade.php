@@ -82,7 +82,7 @@
 
             </div>
             <div class="col-2 col-md-4">
-                <img class="img-fluid ms-3" id="img-preview" src="{{ $restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://marcolanci.it/utils/placeholder.jpg' }}" alt="">
+                <img class="img-fluid ms-3" id="img-preview" src="{{$restaurant->logo ? asset('storage/' . $restaurant->logo) : 'https://marcolanci.it/utils/placeholder.jpg'}}" alt="">
             </div>
         </div>
         <!-- CHECKBOX TYPOLOGIES -->
@@ -92,7 +92,8 @@
                 <div class="mb-3 d-md-flex justify-content-around flex-wrap">
                     @foreach($typologies as $type)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="typologies[]" value="{{$type->id}}" id="{{$type->id}}">
+                        <input class="form-check-input" type="checkbox" id="type-{{ $type->id }}" value="{{ $type->id }}"
+                        name="typologies[]" @if (in_array($type->id, old('typologies', $restaurants_typologies ?? []))) checked @endif>
                         <label class="form-check-label">
                             {{$type->name}}
                         </label>
