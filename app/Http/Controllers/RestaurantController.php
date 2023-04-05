@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use App\Models\Restaurant;
 use App\Models\Typology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -123,10 +124,8 @@ class RestaurantController extends Controller
 
         // DA VEDERE
         if ($restaurant->foods) {
-            $foods = $restaurant->foods->toArray();
-            foreach ($foods as $food) {
-                $food->delete();
-            }
+            $foods = $restaurant->foods->pluck('restaurant_id')->toArray();
+            DB::table('foods')->whereIn('restaurant_id', $foods)->delete();
         };
 
         $restaurant->delete();
