@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Typology;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class TypologyController extends Controller
@@ -10,9 +12,13 @@ class TypologyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = Auth::id();
+        $restaurant = Restaurant::where('user_id', $user)->get();
+        dd($restaurant);
+        $typology = $restaurant->typologies->toArray();
+        return view('admin.typologies.index', compact('typology'));
     }
 
     /**
