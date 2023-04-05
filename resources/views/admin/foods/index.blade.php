@@ -20,11 +20,11 @@
         <th scope="col">Name</th>
         <th scope="col">Image</th>
         <th scope="col">Price</th>
-        <th scope="col">Description</th>
-        <th>Stato</th>
-        <th scope="col">Creato il</th>
-        <th scope="col">Aggiornato il</th>
-        <th></th>
+        <th scope="col" class=" d-none d-md-table-cell">Description</th>
+        <th class="d-none d-md-table-cell" scope="col">Stato</th>
+        <th class=" d-none d-lg-table-cell" scope="col">Creato il</th>
+        <th class=" d-none d-lg-table-cell" scope="col">Aggiornato il</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -38,8 +38,8 @@
             </figure>
           </td>
           <td>{{ $food->price }}</td>
-          <td>{{ $food->description }}</td>
-          <td>
+          <td class=" d-none d-md-table-cell">{{ $food->description }}</td>
+          <td class=" d-none d-md-table-cell">
               <form action="{{ route('admin.foods.toggle', $food->id) }}" method="POST">
                 @method('PATCH')
                 @csrf
@@ -50,16 +50,16 @@
               </form>
               {{-- <i class="fas fa-2x fa-{{ $food->is_public ? 'check' : 'x' }} text-{{ $food->is_public ? 'success' : 'danger' }}"></i> --}}
           </td>
-          <td>{{ $food->getDateDiff('created_at') }}</td>
-          <td>{{ $food->getDate('updated_at', 'd-m-Y H:i:s') }}</td>
+          <td class=" d-none d-lg-table-cell">{{ $food->getDateDiff('created_at') }}</td>
+          <td class=" d-none d-lg-table-cell">{{ $food->getDate('updated_at', 'd-m-Y H:i:s') }}</td>
           <td>
-            <div class="d-flex justify-content-end align-items-center">
+            <div class="d-flex justify-md-content-end flex-column flex-md-row align-items-center">
 
                 <a href="{{ route('admin.foods.show', $food->id) }}" class="btn btn-sm btn-primary">
                     <i class="fas fa-eye"></i>
                 </a>
 
-                <a href="{{ route('admin.foods.edit', $food->id) }}" class="btn btn-sm btn-warning ms-2 text-white">
+                <a href="{{ route('admin.foods.edit', $food->id) }}" class="btn btn-sm btn-warning ms-md-2 my-2 text-white">
                   <i class="fas fa-pencil"></i>
                 </a>
 
@@ -67,7 +67,7 @@
                   data-entity="food">
                   @csrf
                   @method('DELETE')
-                  <button class="ms-2 btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                  <button class="ms-md-2 btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                 </form>
             </div>
           </td>
