@@ -9,7 +9,7 @@
 <div class="row px-5 d-flex justify-content-center">
 
   {{-- IS PUBLIC --}}
-  <div class="col-md-10">
+  <div class="col-md-10 d-flex  justify-content-center">
     <div class="my-4 form-check form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="is_public" name="is_public"
         @if (old('is_public', $food->is_public)) checked @endif>
@@ -19,7 +19,7 @@
 
 
   {{-- NAME  --}}
-  <div class="col-md-6">
+  <div class="col-md-6 d-flex  justify-content-center">
     <div class="mb-3 w-75">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
@@ -33,7 +33,7 @@
   </div>
 
   {{-- PRICE --}}
-  <div class="col-md-4">
+  <div class="col-md-4 d-flex  justify-content-center">
     <div class="mb-3 w-75">
       <label for="price" class="form-label">Price</label>
       <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price"
@@ -47,7 +47,7 @@
   </div>
 
   {{-- DESCRIPTION  --}}
-  <div class="col-md-6">
+  <div class="col-md-6 d-flex  justify-content-center">
     <div class="mb-3 w-75">
       <label for="description" class="form-label">Descrizione cibo</label>
       <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6">{{ old('description', $food->description) }}</textarea>
@@ -61,10 +61,13 @@
 
   {{-- Image --}}
   <div class="col-md-4 mb-4">
-    <div class="mb-3 w-75">
-      <label for="image" class="form-label">Immagine</label>
+    <div class="mb-3 w-100 d-flex  justify-content-center">
+      <div class="w-75">
+        <label for="image" class="form-label">Immagine</label>
       <input type="file" class="form-control" id="image"
         name="image">
+      </div>
+      
     </div>
     
     <div class="col-12 d-flex justify-content-center">

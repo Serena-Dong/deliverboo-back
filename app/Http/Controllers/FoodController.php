@@ -52,7 +52,7 @@ class FoodController extends Controller
 
             'name' => 'required|string|min:5|max:50',
             'price' => 'required|numeric|min:1',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp',
             'description' => 'nullable|string',
             'is_public' => 'nullable',
             'restaurant_id' => 'nullable|exists:restaurants,id',
@@ -64,7 +64,7 @@ class FoodController extends Controller
             'price.required' => 'Il prezzo è obbligatorio',
             'price.min' => 'Il prezzo minimo è :min €',
             'image.image' => 'L\'immagine deve essere file di tipo immagine',
-            'image.mimes' => 'Le estensioni accettate sono jpeg, jpg, png',
+            'image.mimes' => 'Le estensioni accettate sono :mimes',
             'restaurant_id' => 'Ristorante non valido',
         ]);
 
@@ -118,7 +118,7 @@ class FoodController extends Controller
 
             'name' => 'required|string|min:5|max:50',
             'price' => 'required|numeric|min:1',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp',
             'description' => 'nullable|string',
             'is_public' => 'nullable',
             'restaurant_id' => 'nullable|exists:restaurants,id',
@@ -130,7 +130,7 @@ class FoodController extends Controller
             'price.required' => 'Il prezzo è obbligatorio',
             'price.min' => 'Il prezzo minimo è :min €',
             'image.image' => 'L\'immagine deve essere file di tipo immagine',
-            'image.mimes' => 'Le estensioni accettate sono jpeg, jpg, png',
+            'image.mimes' => 'Le estensioni accettate sono :mimes',
             'restaurant_id' => 'Ristorante non valido',
         ]);
 

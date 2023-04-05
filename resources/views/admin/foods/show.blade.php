@@ -5,21 +5,25 @@
     <div class="card m-5">
         <div class="row g-0 align-items-center">
             <div class="col-md-4 p-3">
-                <img src="{{ asset( $food->image) }}" class="img-fluid rounded-3" alt="{{$food->name}}">
+                <img src="{{ $food->image ? asset('storage/' . $food->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}" class="img-fluid rounded-3" alt="{{$food->name}}">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{$food->name}}</h5>
+                    <h5 class="card-title ">{{$food->name}}</h5>
                     <address class="card-text"> {{$food->address}} </address>
-                    <p class="card-text"><b>Ingredienti:</b> {{$food->description}}</p>
+                    <p class="card-text mb-0"><b>Ingredienti:</b> {{$food->description}}</p>
                     <div class="d-flex d-lg-block justify-content-between">
-                        <p class="card-text"><small class="text-body-secondary">Prezzo: {{$food->price}}€</small></p>
+                        <p class="card-text"><b> Prezzo: </b><small class="text-body-secondary">{{$food->price}}€</small></p>
                     </div>
+                    <p class="card-text"><b>Stato: </b><small class="text-body-secondary">{{$food->is_public ? 'pubblicato' : 'bozza'}}</small></p>
                 </div>
             </div>
 
         </div>
-        <div class="d-flex align-items-center justify-content-end me-3 gap-2">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-end  me-3 gap-2">
+            <a href="{{ route('admin.foods.edit', $food->id) }}" class="btn btn-warning ms-2  text-white">
+                <i class="fas fa-pencil me-1"></i>Modifica
+              </a>
             <form action="{{ route('admin.foods.destroy', $food->id) }}" method="POST" class="delete-form text-center my-3">
                 @method('DELETE')
                 @csrf
