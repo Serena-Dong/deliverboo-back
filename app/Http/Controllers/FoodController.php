@@ -89,7 +89,7 @@ class FoodController extends Controller
         $food->restaurant_id = $restaurant_id[0];
 
         $food->save();
-        return to_route('admin.foods.show', $food->id)->with('type', 'danger')->with('msg', "Il piatto '$food->name' è stato creato con successo.");
+        return to_route('admin.foods.show', $food->id)->with('type', 'success')->with('msg', "Il piatto '$food->name' è stato creato con successo.");
     }
 
     /**
@@ -145,7 +145,7 @@ class FoodController extends Controller
         $data['is_public'] = Arr::exists($data, 'is_public');
 
         $food->update($data);
-        return view('admin.foods.show', compact('food'))->with('type', 'danger')->with('msg', "Il piatto '$food->name' è stato modificato con successo.");
+        return to_route('admin.foods.show', compact('food'))->with('type', 'success')->with('msg', "Il piatto '$food->name' è stato modificato con successo.");
     }
 
     /**

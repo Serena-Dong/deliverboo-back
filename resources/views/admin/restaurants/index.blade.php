@@ -16,7 +16,7 @@
                     <div class="info text-center py-3">
                         <h1>Ristorante: {{$restaurant->name}}</h1>
                     </div>
-                    <figure class="w-75 mx-auto">
+                    <figure class=" mx-auto">
                         <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="{{$restaurant->name}}" class="img-fluid rounded-1">
                     </figure>
                 </div>
