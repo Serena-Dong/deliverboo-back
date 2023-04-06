@@ -30,7 +30,10 @@ class TypologyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $typology = Typology::where('id', $id)->with('restaurants')->first();
+        if (!$typology) return response(null, 404);
+
+        return response()->json($typology);
     }
 
     /**
