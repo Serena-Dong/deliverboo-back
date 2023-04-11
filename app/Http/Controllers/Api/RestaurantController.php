@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Food;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Typology;
@@ -14,7 +15,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::with('typologies', 'foods')->get();
+        $prova = [1,2,20];
+        $restaurants = Restaurant::with('typologies')->get();
         return response()->json($restaurants);
     }
 
@@ -31,7 +33,11 @@ class RestaurantController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $foods = Food::where('is_public', true)->where('restaurant_id', $id)->get();
+        $restaurant = Restaurant::where('id', $id)->first();
+        if (!$restaurant) return response(null, 404);
+
+        return response()->json(compact('restaurant', 'foods'));
     }
 
     /**
