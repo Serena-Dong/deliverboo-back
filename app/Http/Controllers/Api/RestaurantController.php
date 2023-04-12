@@ -15,8 +15,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $prova = [1,2,20];
+        $prova = [1, 2, 20];
         $restaurants = Restaurant::with('typologies')->get();
+        foreach ($restaurants as $restaurant) {
+            if ($restaurant->logo) $restaurant->logo = url('storage/' . $restaurant->logo);
+        }
         return response()->json($restaurants);
     }
 
