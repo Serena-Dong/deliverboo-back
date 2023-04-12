@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show']);
 Route::get('/typologies', [TypologyController::class, 'index']);
-Route::get('/typologies/{id}', [TypologyController::class, 'show']);
+Route::get('/typologies/{ids}', [TypologyController::class, 'show']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
