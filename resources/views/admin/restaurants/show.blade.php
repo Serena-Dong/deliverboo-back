@@ -27,9 +27,9 @@
             </div>
 
         </div>
-        <div class="d-flex align-items-center justify-content-center me-3 gap-2">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-end px-3 gap-2">
             <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-warning ms-md-2 my-2 text-white">
-                <i class="fas fa-pencil"></i>Modifica
+                <i class="fas fa-pencil me-1"></i>Modifica
               </a>
             <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST" class="delete-form text-center my-3">
                 @method('DELETE')
