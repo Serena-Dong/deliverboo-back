@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use App\Models\Restaurant;
 use App\Models\Typology;
 
@@ -13,10 +14,17 @@ class RestaurantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $prova = [1, 2, 20];
-        $restaurants = Restaurant::with('typologies')->get();
+        $typeIds = explode(',', $request->query('types'));
+        if ($typeIds) {
+            $restaurants =  Restaurant::whereHas('typologies', function (Builder $query) use ($typeIds) {
+                $query->whereIn('typology_id', $typeIds);
+            }, '=', count($typeIds))->get();
+        } else {
+            $restaurants = Restaurant::with('typologies')->get();
+        }
+
         foreach ($restaurants as $restaurant) {
             if ($restaurant->logo) $restaurant->logo = url('storage/' . $restaurant->logo);
         }
