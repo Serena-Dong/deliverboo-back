@@ -3,7 +3,7 @@
 <div class="container d-flex justify-content-center">
     <div class="card m-5" style="max-width: 80%;">
         <div class="row g-0">
-            <div class="col-md-4 p-3">
+            <div class="col-md-4 p-3 text-center">
                 <img src="{{ asset('storage/' . $restaurant->logo) }}" class="img-fluid rounded-3" alt="{{$restaurant->name}}">
             </div>
             <div class="col-md-8">
@@ -27,9 +27,9 @@
             </div>
 
         </div>
-        <div class="d-flex align-items-center justify-content-center justify-content-md-end px-3 gap-2">
+        <div class="d-flex align-items-center justify-content-center me-3 gap-2">
             <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-warning ms-md-2 my-2 text-white">
-                <i class="fas fa-pencil me-1"></i>Modifica
+                <i class="fas fa-pencil"></i>Modifica
               </a>
             <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST" class="delete-form text-center my-3">
                 @method('DELETE')
