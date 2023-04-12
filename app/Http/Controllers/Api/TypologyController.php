@@ -28,13 +28,26 @@ class TypologyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($ids)
+    public function show(string $ids)
     {
+        $idsArray = str_split($ids);
         $restaurants = [];
-        foreach ($ids as $id) {
-            $restaurant = Typology::where('id', $id)->with('restaurants')->first();
-            $restaurants[] = $restaurant;
+        $restIds = [];
+        foreach ($idsArray as $id) {
+            $restaurant = Typology::where('id', $id)->with('restaurants')->get()->pluck('restaurants')->toArray();
+            foreach ($restaurant as $a) {
+
+                foreach ($a as $b) {
+                    if (!in_array($b['id'], $restIds)) {
+                        $restaurants[] = $b;
+                        $restIds[] = $b['id'];
+                    }
+                }
+            }
         }
+
+
+
         return response()->json($restaurants);
     }
 
