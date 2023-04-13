@@ -30,15 +30,19 @@
         <div class="d-flex align-items-center justify-content-center justify-content-md-end px-3 gap-2">
             <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-warning ms-md-2 my-2 text-white">
                 <i class="fas fa-pencil me-1"></i>Modifica
-              </a>
-            <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST" class="delete-form text-center my-3">
-                @method('DELETE')
-                @csrf
-                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash"></i> Elimina</button>
-            </form>
+            </a>
+            <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa-solid fa-trash"></i> Elimina</button>
             <a href="{{ route('admin.restaurants.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left me-1"></i>Indietro</a>
         </div>
-
     </div>
 </div>
+@endsection
+{{-- modale --}}
+@extends('includes.modal')
+@section('form-delete')
+<form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST" class="delete-form text-center my-3">
+    @method('DELETE')
+    @csrf
+    <button type="submit" class="btn btn-danger">Elimina</button>
+</form>
 @endsection

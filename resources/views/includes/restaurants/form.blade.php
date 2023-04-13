@@ -44,7 +44,7 @@
         <div class="col-md-4">
             <div class="mb-3">
                 <label for="min_order" class="form-label">ordine minimo</label>
-                <input type="number" class="form-control @error('min_order') is-invalid @enderror" id="min_order" name="min_order" value="{{ old('min_order', $restaurant->min_order) }}" minlength="10">
+                <input type="number" class="form-control @error('min_order') is-invalid @enderror" id="min_order" name="min_order" value="{{ old('min_order', $restaurant->min_order) }}" min="0" max="100">
                 @error('min_order')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @else
@@ -56,7 +56,7 @@
         <div class="col-md-4">
             <div class="mb-3">
                 <label for="shipment_price" class="form-label">spedizione</label>
-                <input type="number" class="form-control @error('shipment_price') is-invalid @enderror" id="shipment_price" name="shipment_price" value="{{ old('shipment_price', $restaurant->shipment_price) }}" minlength="1">
+                <input type="number" class="form-control @error('shipment_price') is-invalid @enderror" id="shipment_price" name="shipment_price" value="{{ old('shipment_price', $restaurant->shipment_price) }}" min="5" max="50">
                 @error('shipment_price')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @else
