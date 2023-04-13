@@ -48,6 +48,10 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::where('id', $id)->first();
         if (!$restaurant) return response(null, 404);
 
+        foreach ($foods as $food) {
+            if ($food->image) $food->image = url('storage/' . $food->image);
+        }
+
         return response()->json(compact('restaurant', 'foods'));
     }
 
