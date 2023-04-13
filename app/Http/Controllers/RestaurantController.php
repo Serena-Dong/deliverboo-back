@@ -107,7 +107,7 @@ class RestaurantController extends Controller
         $restaurants = Restaurant::where('user_id', $user)->get();
         $restaurants_typologies = $restaurant->typologies->pluck('id')->toArray();
 
-        
+
         return view('admin.restaurants.edit', compact('restaurant',  'typologies', 'restaurants_typologies'));
     }
 
@@ -122,8 +122,8 @@ class RestaurantController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,jpg,png',
             'address' => 'nullable|string',
             'phone_number' => 'nullable|string|max:13',
-            'min_order' => 'nullable|numeric|min:0',
-            'shipment_price' => 'nullable|numeric|min:5',
+            'min_order' => 'nullable|numeric|min:0|max:100',
+            'shipment_price' => 'nullable|numeric|min:5|max:50',
             'typologies' => 'nullable|exists:typologies,id'
 
         ], [
@@ -132,16 +132,15 @@ class RestaurantController extends Controller
             'name.max' => 'Il nome del ristorante deve avere massimo :max caratteri',
             'logo.mimes' => "l'immagine deve essere di tipo :mimes",
             'phone_number.max' => 'il numero di telefono deve avere max :max caratteri',
-            'min_order.min' => 'il prezzo dell\'ordine non deve essere inferiore a :min €',
+            'min_order.min' => 'il prezzo dell\'ordine minimo non deve essere inferiore a :min €',
+            'min_order.max' => 'il prezzo dell\'ordine minimo non deve essere superiore a :max €',
             'shipment_price.min' => 'il prezzo della spedizione non deve essere inferiore a :min €',
-            'typologies' => 'lw tipologie selezionate non sono valide'
-
-
-
+            'shipment_price.max' => 'il prezzo della spedizione non deve essere superiore a :max €',
+            'typologies' => 'le tipologie selezionate non sono valide'
         ]);
 
 
-        
+
 
 
         $data = $request->all();
@@ -159,10 +158,10 @@ class RestaurantController extends Controller
 
         if (Arr::exists($data, 'typologies')) $restaurant->typologies()->sync($data['typologies']);
 
-        
-      
 
-        return to_route('admin.restaurants.show',compact('restaurant') )->with('type', 'success')->with('msg', "Il ristorante '$restaurant->name' è stato modificato con successo.");
+
+
+        return to_route('admin.restaurants.show', compact('restaurant'))->with('type', 'success')->with('msg', "Il ristorante '$restaurant->name' è stato modificato con successo.");
     }
 
     /**

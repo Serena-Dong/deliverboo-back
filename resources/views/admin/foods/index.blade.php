@@ -63,21 +63,25 @@
                   <i class="fas fa-pencil"></i>
                 </a>
 
-                <form method="POST" action="{{ route('admin.foods.destroy', $food->id) }}" class="delete-form"
-                  data-entity="food">
-                  @csrf
-                  @method('DELETE')
-                  <button class="ms-md-2 btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
-                </form>
+                <button class="ms-md-2 btn btn-sm btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-trash"></i></button>
             </div>
           </td>
         </tr>
+        {{-- modale --}}
+        @extends('includes.modal')
+        @section('form-delete')
+          <form action="{{ route('admin.foods.destroy', $food->id) }}" method="POST" class="delete-form text-center my-3">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="btn btn-danger">Elimina</button>
+          </form>
+        @endsection
       @empty
         <tr>
           <th scope="row" colspan="9" class="text-center">Non ci sono Cibi</th>
         </tr>
       @endforelse
-
     </tbody>
   </table>
+
 @endsection
