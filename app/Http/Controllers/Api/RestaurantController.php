@@ -17,12 +17,16 @@ class RestaurantController extends Controller
     public function index(Request $request)
     {
         $typeIds = explode(',', $request->query('types'));
-        if ($typeIds) {
+
+        if (!$typeIds[0]) {
+            $typeIds[0] = "all";
+        }
+        if ($typeIds[0] == "all") {
+            $restaurants = Restaurant::with('typologies')->get();
+        } elseif ($typeIds) {
             $restaurants =  Restaurant::whereHas('typologies', function (Builder $query) use ($typeIds) {
                 $query->whereIn('typology_id', $typeIds);
             }, '=', count($typeIds))->get();
-        } else {
-            $restaurants = Restaurant::with('typologies')->get();
         }
 
         foreach ($restaurants as $restaurant) {
