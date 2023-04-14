@@ -67,15 +67,7 @@
         <div class="col-md-5 d-flex justify-content-between align-items-center">
             <div class="mb-3">
                 <label for="logo" class="form-label">Immagine</label>
-                <input type="file" class="form-control @if ($restaurant->logo) d-none @endif" id="logo" name="logo">
-
-
-                {{-- Finto upload --}}
-                <div class="input-group mb-3 @if (!$restaurant->logo) d-none @endif" id="previous-image">
-                    <button class="btn btn-outline-secondary" type="button" id="change-image-button">Cambia
-                        immagine</button>
-                    <input type="text" class="form-control" value="{{ $restaurant->logo }}" disabled>
-                </div>
+                <input type="file" class="form-control" id="logo" name="logo">
 
             </div>
             <div class="col-2 col-md-4">
