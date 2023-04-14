@@ -25,14 +25,14 @@
                 </li>
                 @endif
                 @else
-                <div class="d-flex">
+                
                     <li class="nav-item">
                         <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menu') }}</a>
                     </li>
-                </div>
+                
                 
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown " class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
