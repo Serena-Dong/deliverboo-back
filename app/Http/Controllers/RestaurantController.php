@@ -145,7 +145,7 @@ class RestaurantController extends Controller
 
         $data = $request->all();
         if (Arr::exists($data, 'logo')) {
-            // if ($restaurant->logo) Storage::delete($restaurant->logo);
+            if ($restaurant->logo) Storage::delete($restaurant->logo);
             $img_url = Storage::put('restaurants', $data['logo']);
             $data['logo'] = $img_url;
         }
