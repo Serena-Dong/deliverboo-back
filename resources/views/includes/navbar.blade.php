@@ -30,7 +30,7 @@
                         <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menu') }}</a>
+                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menù') }}</a>
                     </li>
                 
                 

@@ -14,6 +14,12 @@
     #navbar {
         background-color: rgba(0, 0, 0, 0.5);
 
+        .container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
         a {
             color: white;
         }
@@ -57,5 +63,10 @@
             border: #feb07c;
             font-weight: bold;
         }
+
+        figure img:hover {
+            filter: grayscale(0.5);
+        }
+
     }
 }

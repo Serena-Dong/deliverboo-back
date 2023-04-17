@@ -8,21 +8,25 @@
         </a>
     </div>
 
+    <div class="text-center mt-5">
+        <h1 class="bg-white p-2 px-5 rounded d-inline">Il tuo ristorante</h1>
+    </div>
     <div class="row p-5 d-flex flex-wrap justify-content-center">
         @foreach ($restaurants as $restaurant)
         <div class="col-6 h-100" style="height: 350px; min-width:350px">
             <a href="{{ route('admin.restaurants.show', $restaurant['id']) }}" style="text-decoration: none; color:black;">
-                <div class="card pb-4">
+                <div class="card p-4 rounded-3">
                     <div class="info text-center py-3">
-                        <h1>Ristorante: {{$restaurant->name}}</h1>
+                        <h1>{{$restaurant->name}}</h1>
                     </div>
-                    <figure class=" mx-auto">
+                    <figure class="mx-auto">
                         <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="{{$restaurant->name}}" class="img-fluid rounded-1">
                     </figure>
                 </div>
             </a>
             <div class="mt-3 d-flex justify-content-center align-items-center gap-3">
                 <a href="{{ route('admin.restaurants.show', $restaurant->id) }}" class="btn btn-primary text-white"><i class="fa-solid fa-eye"></i> Visualizza</a>
+                <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-warning text-white"><i class="fa-solid fa-pen"></i> Modifica</a>
 
             </div>
         </div>
