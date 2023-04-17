@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->char('phone_number', 13)->nullable();
             $table->text('description')->nullable();
-            $table->decimal('min_order', 4,2)->default(0.00);
-            $table->decimal('shipment_price', 4,2)->default(5.00);
-            $table->string('logo')->nullable();
+            $table->decimal('min_order', 4, 2)->default(0.00);
+            $table->decimal('shipment_price', 4, 2)->default(5.00);
+            $table->text('logo')->nullable();
             $table->timestamps();
         });
     }
