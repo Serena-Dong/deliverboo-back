@@ -55,7 +55,7 @@ class RestaurantController extends Controller
         foreach ($foods as $food) {
             if ($food->image) $food->image = url('storage/' . $food->image);
         }
-
+        $restaurant->logo = url('storage/' . $restaurant->logo);
         return response()->json(compact('restaurant', 'foods'));
     }
 
