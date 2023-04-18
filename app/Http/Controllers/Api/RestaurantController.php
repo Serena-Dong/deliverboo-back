@@ -30,7 +30,8 @@ class RestaurantController extends Controller
         }
 
         foreach ($restaurants as $restaurant) {
-            if ($restaurant->logo) $restaurant->logo = url('storage/' . $restaurant->logo);
+            // dd(strpos($restaurant->logo, "restaurants/") == false, $restaurant->logo);
+            if ($restaurant->logo && !str_contains($restaurant->logo, "https://")) $restaurant->logo = url('storage/' . $restaurant->logo);
         }
         return response()->json($restaurants);
     }
@@ -53,9 +54,10 @@ class RestaurantController extends Controller
         if (!$restaurant) return response(null, 404);
 
         foreach ($foods as $food) {
-            if ($food->image) $food->image = url('storage/' . $food->image);
+            // if ($food->image) $food->image = url('storage/' . $food->image);
+            if ($food->image && !str_contains($food->image, "https://")) $food->image = url('storage/' . $food->image);
         }
-        $restaurant->logo = url('storage/' . $restaurant->logo);
+        if ($restaurant->logo && !str_contains($restaurant->logo, "https://")) $restaurant->logo = url('storage/' . $restaurant->logo);
         return response()->json(compact('restaurant', 'foods'));
     }
 
