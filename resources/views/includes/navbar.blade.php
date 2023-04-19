@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light" id="navbar">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" @auth
-            href="{{ route('admin.restaurants.index')}}"
-        @endauth href="{{ url('/') }}">
+        <a class="navbar-brand d-flex align-items-center" @auth href="{{ route('admin.restaurants.index')}}" @endauth href="{{ url('/') }}">
             <div class="logo mb-1">
                 <img src="https://cdn.discordapp.com/attachments/1090199171568500760/1091310054222864464/logo_deliverboo_100x250.png" class="img" alt="">
             </div>
@@ -25,15 +23,17 @@
                 </li>
                 @endif
                 @else
-                
-                    <li class="nav-item">
-                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menù') }}</a>
-                    </li>
-                
-                
+
+                <li class="nav-item">
+                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menù') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.orders*')) custom-active  @endif" href="{{ route('admin.orders.index') }}">{{ __('Ordini') }}</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown " class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
