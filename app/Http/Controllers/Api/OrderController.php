@@ -25,6 +25,7 @@ class OrderController extends Controller
         $order->phone_number = $data['phone_number'];
         $order->guest_name = $data['guest_name'];
         $order->status = $data['status'];
+        $order->restaurant_id = $data['restaurantid'];
         $order->save();
 
         return response(null, 204);
