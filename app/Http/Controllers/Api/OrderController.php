@@ -27,7 +27,7 @@ class OrderController extends Controller
         $order->status = $data['status'];
         $order->restaurant_id = $data['restaurantid'];
         $order->save();
-
+        dd($data);
         return response(null, 204);
     }
 
