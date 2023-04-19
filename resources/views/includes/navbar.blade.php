@@ -25,7 +25,7 @@
                 @endif
                 @else
                 <li class="nav-item">
-                    <a class="nav-link btn-cust-1"  href="http://localhost:5173/">{{ __('Deliveboo.com') }}</a>
+                    <a class="nav-link btn-cust-1"  href="http://localhost:5174/">{{ __('Deliveboo.com') }}</a>
                 </li>
                 
                     <li class="nav-item">
