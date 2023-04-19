@@ -14,6 +14,7 @@
             <ul class="navbar-nav ms-auto justify-content-end w-100">
                 <!-- Authentication Links -->
                 @guest
+                
                 <li class="nav-item">
                     <a class="nav-link btn-cust-1 @if (request()->routeIs('login')) d-none @endif" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
@@ -23,17 +24,18 @@
                 </li>
                 @endif
                 @else
-
                 <li class="nav-item">
-                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
+                    <a class="nav-link btn-cust-1"  href="http://localhost:5173/">{{ __('Deliveboo.com') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menù') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.orders*')) custom-active  @endif" href="{{ route('admin.orders.index') }}">{{ __('Ordini') }}</a>
-                </li>
-
+                
+                    <li class="nav-item">
+                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.restaurants*')) custom-active  @endif" href="{{ route('admin.restaurants.index') }}">{{ __('Ristoranti') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-cust-1 @if(request()->routeIs('admin.foods*')) custom-active  @endif" href="{{ route('admin.foods.index') }}">{{ __('Menù') }}</a>
+                    </li>
+                
+                
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown " class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
